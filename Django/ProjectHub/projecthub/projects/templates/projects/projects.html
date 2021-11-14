@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>All Projects</h1>
+
+{% for p in projects %}
+    {% if not 'Testing' in p.title %}
+    <a href="{% url 'project_detail' p.id %}">{{p.title|title }}</a>
+        {{p.description}}
+        {{p.demo_link}}
+        {{p.source_link}}
+        {{p.created}}
+        <a href="{% url 'project_detail' p.id %}">View Project</a>
+        <a href="{% url 'edit_project' p.id %}">Edit Project</a>
+        <br>
+        <hr>
+    {% endif %}
+
+{% endfor %}
+{% endblock %}
+

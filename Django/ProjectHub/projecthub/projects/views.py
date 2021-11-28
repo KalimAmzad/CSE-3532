@@ -24,7 +24,7 @@ def create_project(request):
     context = {'form': form}
 
     if request.method == 'POST':
-        form = ProjectsForm(request.POST)
+        form = ProjectsForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('projects')
@@ -38,7 +38,7 @@ def edit_project(request, project_id):
     context = {'form': form}
 
     if request.method == 'POST':
-        form = ProjectsForm(request.POST, instance=project)
+        form = ProjectsForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
             return redirect('projects')

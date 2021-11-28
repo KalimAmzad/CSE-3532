@@ -2,9 +2,53 @@
 
 {% block content %}
 
-<h1>Single Project</h1>
 
-<h3>Project ID: {{ project.id }} </h3>
-<p>Project Name: {{project.title|title}}</p>
+<main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <h3 class="singleProject__subtitle">Tools & Stacks</h3>
+          <div class="singleProject__toolStack">
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>Python</small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>React Js</small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>REST API</small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>Django</small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>Postgres</small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>MongoDB</small>
+            </span>
+          </div>
+        
+        {% if project.demo_link %}
+
+          <a class="singleProject__liveLink" href="#" target="_blank"><i class="im im-external-link"></i>Demo Link</a>
+        {% endif %}
+
+        {% if project.source_link %}
+          <a class="singleProject__liveLink" href="#" target="_blank"><i class="im im-external-link"></i>Source Code</a>
+        {% endif %}
+
+        </div>
+        <div class="column column--2of3">
+          <img class="singleProject__preview" src="{{project.featured_image.url}}" alt="portfolio thumbnail" />
+          <h2 class="singleProject__title">{{ project.title}}</h2>
+          <h3 class="singleProject__subtitle">About the Project</h3>
+          <div class="singleProject__info"> {{ project.description }}</div>
+
+          
+      </div>
+    </div>
+    </div>
+  </main>
 
 {% endblock %}

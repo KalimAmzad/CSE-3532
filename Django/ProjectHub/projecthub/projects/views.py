@@ -2,14 +2,17 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Projects
 from .forms import ProjectsForm
-# Create your views here.
-
-# SELECT * from Project;
+from .utils import searchProjects
 
 
 def projects(request):
-    all_projects = Projects.objects.all()
-    context = {'projects': all_projects}
+    projects, search_query = searchProjects(request)
+
+    context = {'projects': projects,
+               'search_query': search_query}
+
+    # all_projects = Projects.objects.all()
+    # context = {'projects': all_projects}
     return render(request, 'projects/projects.html', context)
 
 

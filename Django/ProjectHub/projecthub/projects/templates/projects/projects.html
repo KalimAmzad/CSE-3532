@@ -13,8 +13,8 @@
           <form class="form" action="#" method="get">
             <div class="form__field">
               <label for="formInput#search">Search By Projects </label>
-              <input class="input input--text" id="formInput#search" type="text" name="text"
-                placeholder="Search by Project Title" />
+              <input class="input input--text" id="formInput#search" type="text" name="search"
+                placeholder="Search by Project Title, Tags or description", value="{{ search_query }}" />
             </div>
 
             <input class="btn btn--sub btn--lg" type="submit" value="Search" />
@@ -37,15 +37,13 @@
                   <h3 class="project__title">{{p.title|title }}</h3>
                   
                   <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
+                    {% for tag in p.tags.all %}
+                            <span class="tag tag--pill tag--main">
+                                <small>{{tag}}</small>
+                            </span>
+                    {% endfor %}
+
+
                   </div>
                 </div>
               </a>

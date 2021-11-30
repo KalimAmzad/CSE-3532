@@ -9,24 +9,13 @@
         <div class="column column--1of3">
           <h3 class="singleProject__subtitle">Tools & Stacks</h3>
           <div class="singleProject__toolStack">
+            {% for t in project.tags.all %}
             <span class="tag tag--pill tag--sub tag--lg">
-              <small>Python</small>
+              <small>{{t}}</small>
             </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small>React Js</small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small>REST API</small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small>Django</small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small>Postgres</small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small>MongoDB</small>
-            </span>
+            {% endfor %}
+           
+       
           </div>
         
         {% if project.demo_link %}
